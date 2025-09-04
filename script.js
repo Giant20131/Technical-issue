@@ -3,7 +3,7 @@ const correctId = "podar1984";
 const correctPass = "podar1984";
 
 // Password to allow TXT file download
-const downloadPass = "download123";
+const downloadPass = "Giant@20131";
 
 // Handle login page
 if (document.getElementById("loginForm")) {
@@ -85,4 +85,5 @@ Issue: ${issue.text}
 
   renderIssues();
 }
+
 
