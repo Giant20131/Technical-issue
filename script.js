@@ -1,6 +1,6 @@
 // Login credentials
-const correctId = "admin";
-const correctPass = "1234";
+const correctId = "podar1984";
+const correctPass = "podar1984";
 
 // Password to allow TXT file download
 const downloadPass = "download123";
@@ -85,3 +85,4 @@ Issue: ${issue.text}
 
   renderIssues();
 }
+
