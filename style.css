@@ -1,58 +1,65 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: url('https://img.freepik.com/free-photo/3d-neon-lights-background_23-2150710758.jpg?q=80&semt=ais_hybrid&w=740') no-repeat center center fixed;
-    background-size: cover;
-    color: red;
+  font-family: Arial, sans-serif;
+  background: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  color: #fff;
 }
 
 .container {
-    width: 400px;
-    margin: 100px auto;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px #00f;
+  max-width: 500px;
+  margin: 80px auto;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,255,255,0.6);
 }
 
 h2, h3 {
-    text-align: center;
-    color: #fff;
+  text-align: center;
+  color: cyan;
 }
 
 label {
-    display: block;
-    margin: 10px 0 5px;
-    color: #fff;
+  display: block;
+  margin: 12px 0 5px;
+}
+
+input, select, textarea, button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: none;
+  font-size: 15px;
 }
 
 input, select, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: blue;
-    color: red;
-    font-size: 14px;
+  background: #222;
+  color: red; /* 🔴 Red text */
 }
 
 button {
-    width: 100%;
-    padding: 10px;
-    background: #00f;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
+  background: cyan;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 button:hover {
-    background: #0055ff;
+  background: #00ffffaa;
 }
 
-.error {
-    color: #ff8080;
-    text-align: center;
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 12px 0;
+  padding: 10px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 8px;
+  border: 1px solid cyan;
 }
