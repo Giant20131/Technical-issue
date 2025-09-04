@@ -3,7 +3,7 @@ const correctId = "podar#ky";
 const correctPass = "podar1234";
 
 // Password for downloading TXT files
-const downloadPass = "download123";
+const downloadPass = "prinicipal_podar";
 
 // Handle login page
 if (document.getElementById("loginForm")) {
@@ -12,7 +12,7 @@ if (document.getElementById("loginForm")) {
     const id = document.getElementById("userId").value;
     const pass = document.getElementById("userPass").value;
     if (id === correctId && pass === correctPass) {
-      sessionStorage.setItem("loggedIn", "true"); // ✅ Store session flag
+      sessionStorage.setItem("loggedIn", "true"); // ✅ store session
       window.location.href = "form.html";
     } else {
       document.getElementById("errorMsg").innerText = "Invalid ID or Password!";
@@ -34,7 +34,9 @@ if (document.getElementById("issueForm")) {
 
   function renderIssues() {
     issueList.innerHTML = "";
-    issues.forEach((issue, index) => {
+    // ✅ Show latest issue first
+    issues.slice().reverse().forEach((issue, i) => {
+      const index = issues.length - 1 - i;
       const li = document.createElement("li");
       li.innerHTML = `<strong>${issue.name} (${issue.className}):</strong> ${issue.text}
                       <br><span style="color: red;">Date: ${issue.date}</span>
