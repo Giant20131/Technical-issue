@@ -1,8 +1,8 @@
 // Login credentials
 const correctId = "podar#ky";
-const correctPass = "podar#ky";
+const correctPass = "podar1234";
 
-// Password to allow TXT file download
+// Password for downloading TXT files
 const downloadPass = "download123";
 
 // Handle login page
@@ -12,6 +12,7 @@ if (document.getElementById("loginForm")) {
     const id = document.getElementById("userId").value;
     const pass = document.getElementById("userPass").value;
     if (id === correctId && pass === correctPass) {
+      sessionStorage.setItem("loggedIn", "true"); // ✅ Store session flag
       window.location.href = "form.html";
     } else {
       document.getElementById("errorMsg").innerText = "Invalid ID or Password!";
@@ -19,13 +20,13 @@ if (document.getElementById("loginForm")) {
   });
 }
 
-// Handle technical issue form page
+// Handle issue form page
 if (document.getElementById("issueForm")) {
   const issueForm = document.getElementById("issueForm");
   const issueList = document.getElementById("issueList");
   let issues = JSON.parse(localStorage.getItem("issues") || "[]");
 
-  // ⏳ Delete issues older than 1 day
+  // ⏳ Auto-delete old issues (older than 1 day)
   const oneDay = 24 * 60 * 60 * 1000;
   const now = Date.now();
   issues = issues.filter(issue => now - issue.timestamp < oneDay);
