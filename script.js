@@ -1,9 +1,9 @@
 // Login credentials
-const correctId = "podar123";
-const correctPass = "podar@1234";
+const correctId = "admin";
+const correctPass = "1234";
 
 // Password to allow TXT file download
-const downloadPass = "Giant@20131";
+const downloadPass = "download123";
 
 // Handle login page
 if (document.getElementById("loginForm")) {
@@ -25,6 +25,12 @@ if (document.getElementById("issueForm")) {
   const issueList = document.getElementById("issueList");
   let issues = JSON.parse(localStorage.getItem("issues") || "[]");
 
+  // ⏳ Delete issues older than 1 day (24 hours)
+  const oneDay = 24 * 60 * 60 * 1000;
+  const now = Date.now();
+  issues = issues.filter(issue => now - issue.timestamp < oneDay);
+  localStorage.setItem("issues", JSON.stringify(issues));
+
   function renderIssues() {
     issueList.innerHTML = "";
     issues.forEach((issue, index) => {
@@ -41,7 +47,12 @@ if (document.getElementById("issueForm")) {
     const className = document.getElementById("classSelect").value;
     const text = document.getElementById("issue").value;
 
-    const newIssue = { name, className, text };
+    const newIssue = { 
+      name, 
+      className, 
+      text, 
+      timestamp: Date.now()  // save creation time
+    };
     issues.push(newIssue);
     localStorage.setItem("issues", JSON.stringify(issues));
     renderIssues();
