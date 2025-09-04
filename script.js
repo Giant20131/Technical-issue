@@ -3,7 +3,24 @@ const correctId = "podar#ky";
 const correctPass = "podar1234";
 
 // Password for downloading TXT files
-const downloadPass = "prinicipal_podar";
+const downloadPass = "download123";
+
+// ✅ Ask for notification permission
+function requestNotificationPermission() {
+  if ("Notification" in window && Notification.permission !== "granted") {
+    Notification.requestPermission();
+  }
+}
+
+// ✅ Show notification
+function showNotification(issue) {
+  if ("Notification" in window && Notification.permission === "granted") {
+    new Notification("New Technical Issue", {
+      body: `${issue.name} (${issue.className}) - ${issue.text}`,
+      icon: "https://cdn-icons-png.flaticon.com/512/565/565547.png"
+    });
+  }
+}
 
 // Handle login page
 if (document.getElementById("loginForm")) {
@@ -63,6 +80,9 @@ if (document.getElementById("issueForm")) {
     localStorage.setItem("issues", JSON.stringify(issues));
     renderIssues();
 
+    // ✅ Trigger notification
+    showNotification(newIssue);
+
     issueForm.reset();
   });
 
@@ -91,4 +111,5 @@ Issue: ${issue.text}
   };
 
   renderIssues();
+  requestNotificationPermission(); // ✅ Ask for permission on page load
 }
