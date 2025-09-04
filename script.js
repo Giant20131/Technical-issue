@@ -1,9 +1,9 @@
 // Login credentials
-const correctId = "podar1984";
-const correctPass = "podar1984";
+const correctId = "podar#ky";
+const correctPass = "podar#ky";
 
 // Password to allow TXT file download
-const downloadPass = "Giant@20131";
+const downloadPass = "download123";
 
 // Handle login page
 if (document.getElementById("loginForm")) {
@@ -25,7 +25,7 @@ if (document.getElementById("issueForm")) {
   const issueList = document.getElementById("issueList");
   let issues = JSON.parse(localStorage.getItem("issues") || "[]");
 
-  // ⏳ Delete issues older than 1 day (24 hours)
+  // ⏳ Delete issues older than 1 day
   const oneDay = 24 * 60 * 60 * 1000;
   const now = Date.now();
   issues = issues.filter(issue => now - issue.timestamp < oneDay);
@@ -36,6 +36,7 @@ if (document.getElementById("issueForm")) {
     issues.forEach((issue, index) => {
       const li = document.createElement("li");
       li.innerHTML = `<strong>${issue.name} (${issue.className}):</strong> ${issue.text}
+                      <br><span style="color: red;">Date: ${issue.date}</span>
                       <br><button onclick="downloadIssue(${index})">Download TXT</button>`;
       issueList.appendChild(li);
     });
@@ -45,13 +46,15 @@ if (document.getElementById("issueForm")) {
     e.preventDefault();
     const name = document.getElementById("name").value;
     const className = document.getElementById("classSelect").value;
+    const date = document.getElementById("date").value;
     const text = document.getElementById("issue").value;
 
     const newIssue = { 
       name, 
       className, 
+      date,
       text, 
-      timestamp: Date.now()  // save creation time
+      timestamp: Date.now()
     };
     issues.push(newIssue);
     localStorage.setItem("issues", JSON.stringify(issues));
@@ -73,6 +76,7 @@ if (document.getElementById("issueForm")) {
 ----------------------
 Name: ${issue.name}
 Class: ${issue.className}
+Date: ${issue.date}
 Issue: ${issue.text}
 ----------------------`;
 
@@ -85,5 +89,3 @@ Issue: ${issue.text}
 
   renderIssues();
 }
-
-
